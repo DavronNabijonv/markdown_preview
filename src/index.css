@@ -17,4 +17,24 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+ul{
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+ul li{
+  padding-left: 8px;
+}
+
+ol{
+  padding-left: 25px;
+  line-height: 28px;
+}
+
+pre,code{
+  background-color: white;
+  padding: 5px 15px;
 }

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react"; 
 import { marked } from "marked"; 
 import ReactMarkdown from 'react-markdown';
+import remarkBreaks from 'remark-breaks';
 import { MarkTogle, PreviewMarkup, PrevTogle } from "../App";
 import { LiaFreeCodeCamp } from "react-icons/lia";
 import { FaCompressAlt, FaExpandArrowsAlt } from "react-icons/fa";
@@ -22,12 +23,13 @@ export default function Prev() {
   // Configure marked to enable GFM and syntax highlighting
   marked.setOptions({
     breaks: true, // Line breaks in Markdown will be rendered as <br>
-    gfm: true, // GitHub-flavored Markdown
+    gfm: true, 
     highlight: function (code, lang) {
-      // Optionally add syntax highlighting logic (using highlight.js, for example)
-      return code; // Without highlighting for now
+      return code; 
     },
   });
+
+  console.log(marked(markPrev))
 
   return (
     <div className={markTog ? "hide" : "previewPart"}>
@@ -36,15 +38,14 @@ export default function Prev() {
           <span>
             <LiaFreeCodeCamp />
           </span>
-          <h2>Editor</h2>
+          <p>Editor</p>
         </div>
         <button onClick={() => { setComp(!comp); setPrevTog(!prevTog); }}>
           {comp ? <FaCompressAlt /> : <FaExpandArrowsAlt />}
         </button>
       </div>
-      <div className="prevDiv">
-        {/* Use ReactMarkdown to render the Markdown */}
-        <ReactMarkdown>{markPrev}</ReactMarkdown>
+      <div id="preview">
+        <ReactMarkdown remarkPlugins={[remarkBreaks]} >{markPrev}</ReactMarkdown>
       </div>
     </div>
   );

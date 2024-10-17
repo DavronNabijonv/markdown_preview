@@ -24,13 +24,13 @@ export default function Mark() {
       <div className="head">
         <div className="lefhead_left">
           <span><LiaFreeCodeCamp /></span>
-          <h2>Editor</h2>
+          <p>Editor</p>
         </div>
         <button onClick={() =>{setComp(!comp);setMarkTog(!markTog)}}>
         {comp ? <FaCompressAlt />: <FaExpandArrowsAlt />}
         </button>
       </div>
-      <div className={"long"}>
+      <div className={comp?"long":"short"}>
         <textarea
           id="editor"
           value={markPrev}
